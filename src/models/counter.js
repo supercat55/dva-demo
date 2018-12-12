@@ -21,17 +21,12 @@ export default {
         dispatch({ type: "add" });
       };
     },
-    documentOnclik({ dispatch }) {
-      document.addEventListener("click", () => {
-        dispatch({ type: "add" });
-      });
-    },
     setupHistory({ dispatch, history }) {
       history.listen(location => {
         console.log(location);
 
         if (location.pathname === "/counter") {
-          dispatch({ type: "add" });
+          dispatch({ type: "add " });
         }
       });
     }
