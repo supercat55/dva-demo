@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "dva";
 
 const UserPage = props => {
-  console.log(props);
   const { dispatch } = props;
   const { error, user } = props.user;
   let isFetching = props.loading.effects["user/fetch"];

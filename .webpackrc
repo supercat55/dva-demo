@@ -1,2 +1,14 @@
 {
+  "entry": {
+    "index": "./src/routes/IndexPage.js",
+    "counter": "./src/routes/CounterPage.js",
+    "user": "./src/routes/UserPage.js"
+  },
+  "proxy": {
+    "/api": {
+      "target": "http://www.baidu.com/",
+      "changeOrigin": true,
+      "pathRewrite": { "^/api": "" }
+    }
+  }
 }
