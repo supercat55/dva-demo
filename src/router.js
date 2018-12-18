@@ -4,7 +4,7 @@ import IndexPage from "./routes/IndexPage";
 import CounterPage from "./routes/CounterPage";
 import UserPage from "./routes/UserPage";
 
-function RouterConfig({ history, app }) {
+function RouterConfig({ history }) {
   return (
     <Router history={history}>
       <Switch>
