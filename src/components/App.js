@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import { CDNFlagIcon } from "react-flag-kit";
 import styled, { keyframes } from "styled-components";
 
+import Modal from "./Modal";
+
 const AppWrapper = styled.div`
-  background-color: ${props => (props.isBlack ? "#222" : "red")};
+  background-color: ${props => (props.isBlack ? "#fff" : "red")};
 `;
 
 const SeleteWrapper = styled.select`
@@ -25,12 +27,15 @@ const TextScale = keyframes`
 
 const H1Wrapper = styled.h1`
   margin: 0 auto;
-  animation: ${TextScale} infinite 5s linear;
+  /* animation: ${TextScale} infinite 5s linear; */
 `;
 
 class App extends Component {
+  state = {
+    visible: false
+  };
+
   render() {
-    console.log(this.props);
     const { state, updateLocale } = this.props;
     const { locale, flag, content } = state;
     return (
@@ -45,6 +50,18 @@ class App extends Component {
         </SeleteWrapper>
         <CDNFlagIcon code={flag} size={256} />
         <H1Wrapper>{content}</H1Wrapper>
+
+        <button onClick={() => this.setState({ visible: !this.state.visible })}>
+          show Modal
+        </button>
+        <Modal
+          visible={this.state.visible}
+          onClose={() => {
+            this.setState({ visible: false });
+          }}
+        >
+          This message is from Modal
+        </Modal>
       </AppWrapper>
     );
   }
