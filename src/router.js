@@ -5,6 +5,7 @@ import CounterPage from "./routes/CounterPage";
 import UserPage from "./routes/UserPage";
 import AppPage from "./routes/AppPage";
 import HookPage from "./routes/HookPage";
+import TodoListPage from "./routes/TodoListPage";
 
 function RouterConfig({ history }) {
   return (
@@ -15,6 +16,7 @@ function RouterConfig({ history }) {
         <Route path="/counter" exact component={CounterPage} />
         <Route path="/user" exact component={UserPage} />
         <Route path="/hook" exact component={HookPage} />
+        <Route path="/todoList" exact component={TodoListPage} />
       </Switch>
     </Router>
   );
