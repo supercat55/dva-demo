@@ -72,23 +72,49 @@ const TokenApp = () => {
   );
 };
 
-const HookPage = () => {
-  const [count, setCount] = useState(0);
-  const [name, setName] = useState("aa");
+const userFetch = (url, count) => {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  // 第二个参数改变时才会触发，如果第二个参数为空[], 都不触发
+  // 第二个参数改变时才会触发，如果第二个参数为空[], 只执行didmonut
   useEffect(
     () => {
       console.log(`render ${count}`);
 
-      document.title = `You clicked ${count} times`;
+      (async () => {
+        setLoading(true);
+        const response = await fetch(url);
+        const data = await response.json();
+        const [item] = data.results;
+        setData(item);
+        setLoading(false);
+      })();
     },
     [count]
   );
 
-  useEffect(() => {
-    console.log(`render Name is ${name}`);
-  });
+  return {
+    data,
+    loading
+  };
+};
+
+const HookPage = () => {
+  const [count, setCount] = useState(0);
+
+  // useEffect(() => {
+  //   console.log(`render ${count}`);
+
+  //   document.title = `You clicked ${count} times`;
+
+  //   (async () => {
+  //     const response = await fetch("https://randomuser.me/api/");
+  //     const data = await response.json();
+  //     const [item] = data.results;
+  //     setPerson(item);
+  //   })();
+  // }, []);
+  const { data, loading } = userFetch("https://randomuser.me/api/", count);
 
   return (
     <div>
@@ -96,7 +122,7 @@ const HookPage = () => {
         You clicked <strong>{count}</strong> times
       </p>
       <button onClick={() => setCount(count + 1)}>Click me</button>
-      <button onClick={() => setName("bbb")}>Click me</button>
+      {loading ? <div>...loading</div> : <div>{data.name.first}</div>}
       <hr />
       <EmojiGenerator />
       <hr />
