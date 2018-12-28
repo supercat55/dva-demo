@@ -6,6 +6,7 @@ import UserPage from "./routes/UserPage";
 import AppPage from "./routes/AppPage";
 import HookPage from "./routes/HookPage";
 import TodoListPage from "./routes/TodoListPage";
+import GithubListPage from "./routes/GithubListClass";
 
 function RouterConfig({ history }) {
   return (
@@ -17,6 +18,7 @@ function RouterConfig({ history }) {
         <Route path="/user" exact component={UserPage} />
         <Route path="/hook" exact component={HookPage} />
         <Route path="/todoList" exact component={TodoListPage} />
+        <Route path="/githubList" exact component={GithubListPage} />
       </Switch>
     </Router>
   );
