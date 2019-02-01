@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import TodoForm from "../components/TodoForm";
+import { useImmerReducer } from "use-immer";
 
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
@@ -19,7 +20,7 @@ const TodoList = () => {
       <div>
         {todos.map((item, index) => (
           <div
-            key={item.text}
+            key={index}
             onClick={() => toggleComplete(index)}
             style={{ textDecoration: item.complete ? "line-through" : "" }}
           >

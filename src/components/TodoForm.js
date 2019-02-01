@@ -11,7 +11,9 @@ const useInputValue = initialValue => {
 };
 
 export default ({ onSubmit }) => {
+  console.log("rending form");
   const { resetValue, ...text } = useInputValue("");
+  console.log(text);
   return (
     <form
       onSubmit={e => {
